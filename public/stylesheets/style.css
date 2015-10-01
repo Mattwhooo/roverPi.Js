@@ -1,0 +1,59 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.overlay{
+  margin-left: -3%;
+  margin-top:-50px;
+  z-index:100;
+  width:103%;
+  height: 102%;
+  position:absolute;
+  display: block;
+  background-color: rgba(0,0,0, 0.8);
+}
+
+.connect{
+  width: 200px;
+  height: 125px;
+  background-color: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
+.gamepad{
+
+  heigh: 100%;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
+}
+
+.gamepad-text{
+  font-size: large;
+}
+.content{
+  padding:50px;
+  text-align: center;
+}
