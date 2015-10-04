@@ -98,7 +98,7 @@ a {
   position: absolute;
   height: 140px;
   width: 100%;
-  background-color: #85FFC7;
+  background-color: ghostwhite;
   border-width: 2px;
 }
 .controller{
@@ -166,7 +166,7 @@ progress{
   color: #003459;
   font-size: x-large;
   vertical-align: middle;
-  background-color: #EAF8BF;
+  background-color: white;
 }
 .header i{
   font-size: x-large;
