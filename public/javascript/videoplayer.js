@@ -32,7 +32,6 @@ function hideInput(){
 }
 
 function loadVideo(){
-  alert('yes');
   var img = document.createElement('img');
   img.setAttribute('src', window.location.hostname + ':8080/stream/video.mjpeg');
   img.setAttribute('class', 'img-responsive');
