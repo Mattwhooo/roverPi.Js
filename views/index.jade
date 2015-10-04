@@ -1,9 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  button.btn.btn-primary.btn-lg(data-toggle="modal", data-target="#myModal") Show Video
+
+  #video
+  .welcome-message
+    p Welcome to #{title}
+    button#load_video.btn.btn-default.btn-lg Load Video Stream
   //video(id="really-cool-video", class="video-js vjs-default-skin", controls, preload="auto", width="640", height="264", data-setup='{}')
     source(src="http://192.168.0.8:8080/stream", type='video/mjpeg')
   div.modal.fade#myModal
@@ -17,3 +19,13 @@ block content
 
         div.modal-body(style='padding:0px')
           img#video_player(alt="image")
+block footer
+  footer#footer
+    #show_controller.btn.btn-xs.btn-default
+      .controllerBtn#hideBtn
+      i.chevron.fa.fa-chevron-up
+      .controllerBtn#showBtn Show Controller Input
+    #controller_input
+      #controller.controller
+        #axes.axes.controller
+

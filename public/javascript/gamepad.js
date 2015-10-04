@@ -18,32 +18,26 @@ function showOverlay(){
 function addgamepad(gamepad) {
     controllers[gamepad.index] = gamepad;
 
-    var d = document.createElement("div");
-    d.setAttribute("id", "controller" + gamepad.index);
-
-    var a = document.createElement("div");
-    a.className = "axes";
-
     for (var i = 0; i < 4; i++) {
         var p = document.createElement("progress");
         var s = document.createElement("span");
-
+        var d = document.createElement('div');
+        s.setAttribute('id', 'axes' + i)
+        d.innerText='Axis ' + i;
         p.className = "axis";
         if(i==1 || i==3 || i == 5) {
            p.className = "axis vertical-axis"
         }
-        //p.id = "a" + i;
         p.setAttribute("max", "2");
         p.setAttribute("value", "1");
-        p.innerHTML = i;
+        //p.innerHTML = i;
+
         s.appendChild(p)
-        a.appendChild(s);
+        s.appendChild(d)
+
+        document.getElementById('axes').appendChild(s);
     }
 
-    d.appendChild(a);
-
-
-    document.getElementById('footer').appendChild(d);
     requestAnimationFrame(updateStatus);
 }
 
@@ -68,7 +62,7 @@ function updateStatus() {
 
     for (j in controllers) {
         var controller = controllers[j];
-        var d = document.getElementById("controller" + j);
+        var d = document.getElementById("controller");
 
         var axes = d.getElementsByClassName("axis");
         for (i = 0; i < 4; i++) {

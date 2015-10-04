@@ -13,15 +13,20 @@ html
     script( src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js")
     script(src='/javascript/gamepad.js')
     script(src='/javascript/videoplayer.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    .header
+      span.title Rover-Pi
+      i.pull-right.fa.fa-gear
     .overlay
       .connect
         i.gamepad.fa.fa-gamepad.fa-5x
           br
           .gamepad-text
             p Please Connect a Game Pad
-    .panel.panel-default(style='margin:50px')
+
+    .panel.panel-default(style='margin:5px')
       .panel-content.content
         block content
-    footer#footer
+    block footer
 
