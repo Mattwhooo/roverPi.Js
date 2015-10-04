@@ -1,11 +1,11 @@
 var haveEvents = 'ongamepadconnected' in window;
 var controllers = {};
 var socket = io();
+
 function connecthandler(e) {
     addgamepad(e.gamepad);
     showOverlay();
 }
-
 
 function showOverlay(){
     if (typeof controllers[0] !== 'undefined' ){
@@ -21,44 +21,29 @@ function addgamepad(gamepad) {
     var d = document.createElement("div");
     d.setAttribute("id", "controller" + gamepad.index);
 
-    var t = document.createElement("h1");
-    t.appendChild(document.createTextNode("gamepad: " + gamepad.id));
-    d.appendChild(t);
-
-    var b = document.createElement("div");
-    b.className = "buttons";
-    for (var i = 0; i < gamepad.buttons.length; i++) {
-        var e = document.createElement("span");
-        e.className = "button";
-        //e.id = "b" + i;
-        e.innerHTML = i;
-        b.appendChild(e);
-    }
-
-    d.appendChild(b);
-
     var a = document.createElement("div");
     a.className = "axes";
 
-    for (var i = 0; i < gamepad.axes.length; i++) {
+    for (var i = 0; i < 4; i++) {
         var p = document.createElement("progress");
+        var s = document.createElement("span");
+
         p.className = "axis";
+        if(i==1 || i==3 || i == 5) {
+           p.className = "axis vertical-axis"
+        }
         //p.id = "a" + i;
         p.setAttribute("max", "2");
         p.setAttribute("value", "1");
         p.innerHTML = i;
-        a.appendChild(p);
+        s.appendChild(p)
+        a.appendChild(s);
     }
 
     d.appendChild(a);
 
-    // See https://github.com/luser/gamepadtest/blob/master/index.html
-    var start = document.getElementById("start");
-    if (start) {
-        start.style.display = "none";
-    }
 
-    document.body.appendChild(d);
+    document.getElementById('footer').appendChild(d);
     requestAnimationFrame(updateStatus);
 }
 
@@ -84,31 +69,9 @@ function updateStatus() {
     for (j in controllers) {
         var controller = controllers[j];
         var d = document.getElementById("controller" + j);
-        var buttons = d.getElementsByClassName("button");
-
-        for (i = 0; i < controller.buttons.length; i++) {
-            var b = buttons[i];
-            var val = controller.buttons[i];
-            var pressed = val == 1.0;
-            if (typeof(val) == "object") {
-                buttonPressed = i
-                pressed = val.pressed;
-                val = val.value;
-            }
-
-            var pct = Math.round(val * 100) + "%";
-            b.style.backgroundSize = pct + " " + pct;
-
-            if (pressed) {
-                b.className = "button pressed";
-                socket.emit('gamepadUpdate', 'Button[' + buttonPressed.toString() + '] =' + val);
-            } else {
-                b.className = "button";
-            }
-        }
 
         var axes = d.getElementsByClassName("axis");
-        for (i = 0; i < controller.axes.length; i++) {
+        for (i = 0; i < 4; i++) {
             var a = axes[i];
             a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
             a.setAttribute("value", controller.axes[i] + 1);

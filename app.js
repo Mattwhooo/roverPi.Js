@@ -1,36 +1,32 @@
 require('coffee-script/register')
+
+//Create Server
 var express = require('express');
+var app = express();
+var http = require('http').Server(app)
+
+
+//Define Middleware
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Define Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var greet = require('./javascripts/testing');
-console.log(greet("Marcus"));
+//Create Websockets
+var websockets = require('./javascripts/sockets.coffee');
+websockets.websockets(http);
 
-var app = express();
-
-var http = require('http').Server(app)
-
-var io = require('socket.io')(http);
-io.on('connection', function(sock){
-  console.log('connection made');
-  sock.on('gamepadUpdate', function(msg){
-    console.log('GamePad Pressed -> ' + msg);
-  })
-});
-
-
-// view engine setup
+// View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

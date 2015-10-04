@@ -1,10 +1,10 @@
 {
-  "name": "roverPi",
+  "name": "rover_pi",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "test": "mocha -w --compilers coffee:coffee-script/register",
-    "start": "(coffee --compile --output dist --watch views/javascripts &); node ./bin/www"
+    "start": " node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

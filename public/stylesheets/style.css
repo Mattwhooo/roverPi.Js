@@ -57,3 +57,22 @@ a {
   padding:50px;
   text-align: center;
 }
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%
+}
+.axes{
+  display: table;
+  width: 100%
+}
+.axes span{
+  display: table-cell;
+}
+.vertical-axis{
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
