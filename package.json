@@ -1,6 +1,6 @@
 {
   "name": "rover_pi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "test": "mocha -w --compilers coffee:coffee-script/register",
