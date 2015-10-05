@@ -33,7 +33,7 @@ function hideInput(){
 
 function loadVideo(){
   var img = document.createElement('img');
-  img.setAttribute('src', window.location.hostname + ':8080/stream/video.mjpeg');
+  img.setAttribute('src', 'http://' + window.location.hostname + ':8080/stream/video.mjpeg');
   img.setAttribute('class', 'img-responsive');
   img.setAttribute('style', 'height:100%;margin-left:auto;margin-right:auto');
   $('.welcome-message').fadeOut();
