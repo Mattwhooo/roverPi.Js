@@ -70,7 +70,7 @@ function updateStatus() {
             a.innerHTML = i + ": " + controller.axes[i].toFixed(4);
             a.setAttribute("value", controller.axes[i] + 1);
             if (controller.axes[i] > 0.1 || controller.axes[i] < -0.1){
-                socket.emit('gamepadUpdate', 'Axis[' + i.toString()+ '] = ' + controller.axes[i]);
+                socket.emit('gamepadUpdate', i.toString() + '=' + controller.axes[i]);
             }
 
         }
